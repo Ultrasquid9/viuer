@@ -28,9 +28,8 @@ crossterm = { version = "0.28", default-features = false, features = ["windows"]
 
 [features]
 default = []
-avif = ["image/avif-native"]
 sixel = ["sixel-rs"]
-print-file = ["image/default-formats"] # Hide file printing behind a flag because it adds heavy dependencies.
+print-file = ["image/default-formats", "image/avif-native"] # Hide file printing behind a flag because it adds heavy dependencies.
 
 
 [package.metadata.docs.rs]
