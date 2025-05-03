@@ -60,11 +60,11 @@ pub enum KittySupport {
 fn check_kitty_support() -> KittySupport {
     if let Ok(term) = std::env::var("TERM") {
         if term.contains("kitty") || term.contains("ghostty") {
-            if has_local_support().is_ok() {
-                return KittySupport::Local;
-            }
-
-            return KittySupport::Remote;
+            return if has_local_support().is_ok() {
+                KittySupport::Local
+            } else {
+                KittySupport::Remote
+            };
         }
     }
     KittySupport::None
